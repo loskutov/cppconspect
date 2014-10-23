@@ -80,13 +80,17 @@ IP-address
 0.0.0.0 -- any
 255.255.255.255 -- broadcast
 10.0.0.0 -- 10.255.255.255      -- 24 bit
+
 192.168.0.0. -- 192.168.255.255 -- 16 bit
+
 172.16.0.0 -- 172.31.255.255    -- 20bit
+
 127.0.0.0 -- 127.255.255.255    -- localhost
 
 ICMP -- Internet Control Message Protocol
+
 TCP -- Transmission Control Protocol
-    connection-oriented
+    (connection-oriented)
 UDP -- User Datagram Protocol
 65536 ports
 
@@ -95,15 +99,16 @@ MTU = maximal transfer unit -- 1500 bytes
 BSD-socket
 UNIX domain socket
 
-server                                  client
-s = socket(...SOCK_STREAM)            r = socket(...SOCK_STREAM)
-bind(s, local_addr)                   connect(s,...,remote_addr)
+server                         |        client
+-------------------------------|------------------------
+s = socket(...SOCK_STREAM)     |      r = socket(...SOCK_STREAM)
+bind(s, local_addr)            |      connect(s,...,remote_addr)
 s1 = accept(s);
-recv()                                  recv(s)
-send()                                  send(s)
+recv()                         |        recv(s)
+send()                         |        send(s)
 
-close(s1)                               close(r);
-close(s)
+close(s1)                      |        close(r);
+close(s)                       |  
 
 
 
