@@ -114,14 +114,15 @@ close(s)                       |
 UDP
 ===
 
-server                                  client
-s = socket(...SOCK_DGRAM)            r = socket(...SOCK_DGRAM)
-bind(s, local_addr)                   connect(s,...,remote_addr)
-s1 = accept(s);
-recv()                                  recv(s)
-send()                                  send(s)
-close(s1)                               close(r);
-close(s)
+server                         |        client
+-------------------------------|--------------------------
+s = socket(...SOCK_DGRAM)      |     r = socket(...SOCK_DGRAM)
+bind(s, local_addr)            |      connect(s,...,remote_addr)
+s1 = accept(s);                | 
+recv()                         |        recv(s)
+send()                         |        send(s)
+close(s1)                      |        close(r);
+close(s)                       |  
 
 
 
@@ -132,8 +133,9 @@ close(s)
 + epoll_wait
 + epoll_wait
 
-
+```cpp
     token = async_wait(io_service&, int, function)
+```
 
 + timerfd
 + eventfd
@@ -177,12 +179,12 @@ Spring 1992
 Type erasure
 ============
 
-A | B | C
---|---|--
-f | f | f
+ A | B | C
+---|---|---
+ f | f | f
 
 X f
-
+```cpp
     any_iterator <bidirectional_iterator_blabla> a = v.begin();
     any<f, g, h> f;
 
@@ -214,6 +216,7 @@ X f
         private:
             unique_ptr<interface> p;
     }
+```
 
 RTTI
 ====
@@ -225,7 +228,7 @@ Variadic templates
 
 perfect forwarding
 
-
+```cpp
     struct optional {
         template<typename InPlace>
         optional& operator=(InPlace inplace) {
@@ -234,3 +237,4 @@ perfect forwarding
         // тут я, кажется, заснул :/
         }
     }
+```
