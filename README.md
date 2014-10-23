@@ -103,10 +103,9 @@ server                         |        client
 -------------------------------|------------------------
 s = socket(...SOCK_STREAM)     |      r = socket(...SOCK_STREAM)
 bind(s, local_addr)            |      connect(s,...,remote_addr)
-s1 = accept(s);
+s1 = accept(s);                |    
 recv()                         |        recv(s)
 send()                         |        send(s)
-
 close(s1)                      |        close(r);
 close(s)                       |  
 
