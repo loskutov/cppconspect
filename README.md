@@ -177,13 +177,14 @@ Spring 1992
 Type erasure
 ============
 
-A   B   C
-f   f   f
+A | B | C
+--|---|--
+f | f | f
 
 X f
 
-any_iterator <bidirectional_iterator_blabla> a = v.begin();
-any<f, g, h> f;
+    any_iterator <bidirectional_iterator_blabla> a = v.begin();
+    any<f, g, h> f;
 
     struct any {
         struct interface {
@@ -225,8 +226,11 @@ Variadic templates
 perfect forwarding
 
 
-struct optional {
-    template<typename InPlace>
-    optional& operator=(InPlace inplace) {
-        inplace.create(data);
-        initialized = true;
+    struct optional {
+        template<typename InPlace>
+        optional& operator=(InPlace inplace) {
+            inplace.create(data);
+            initialized = true;
+        // тут я, кажется, заснул :/
+        }
+    }
