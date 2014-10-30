@@ -238,3 +238,10 @@ perfect forwarding
         }
     }
 ```
+
+Assert
+======
+`NDEBUG` — disable asserts
+```cpp
+std::abort
+```
