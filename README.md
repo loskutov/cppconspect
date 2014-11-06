@@ -241,7 +241,27 @@ perfect forwarding
 
 Assert
 ======
-`NDEBUG` — disable asserts
+`NDEBUG` — disables asserts
 ```cpp
 std::abort
+```
+
+Logging: Boost.Asio
+
+Multithreading
+==============
+
+```cpp
+
+int accounts[1000];
+
+void transfer(size_t from, size_t to, int amount)
+{
+    if(amount < 0)
+        throw std::runtime_error("...");
+    if(accounts[from] < amount)
+        throw std::runtime_error("insufficient funds");
+    accounts[from] -= amount;
+    accounts[to] += amount;
+}
 ```
